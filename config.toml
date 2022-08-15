@@ -1,0 +1,64 @@
+baseURL = 'https://sanjaybalaji.dev/'
+languageCode = 'en-us'
+title = 'sanjaybalaji.dev'
+theme = "timeline"
+PygmentsCodeFences = true
+PygmentsStyle = "monokai"
+paginate  = 10
+
+
+[taxonomies]
+  tag      = "tags"
+  category = "categories"
+  series   = "series"
+
+[permalinks]
+  posts = "/posts/:year/:month/:title/"
+
+[author]
+  name = "Sanjay Balaji"
+
+[params]
+  defaultTheme = "dark"
+  themeColor = "#252627"
+
+  [params.favicon.color]
+    mask = "#252627"
+    msapplication = "#252627"
+    theme = "#252627"
+
+  enableSharingButtons = true
+  [params.logo]
+    logoText     = "$"
+    logoHomeLink = "/"
+    logoCursorAnimate  = "2s"
+
+  [[params.social]]
+    name = "twitter"
+    url  = "https://twitter.com/balz_sanjay"
+
+  [[params.social]]
+    name = "medium"
+    url  = "https://buggycodemaster.medium.com/"
+
+[menu]
+  [[menu.main]]
+    identifier = "about"
+    name       = "r/about"
+    url        = "about/"
+    weight     = 1
+  [[menu.main]]
+    identifier = "timeline"
+    name       = "r/timeline"
+    url        = "timeline/"
+    weight     = 2
+  [[menu.main]]
+    identifier = "projects"
+    name       = "r/projects"
+    url        = "projects/"
+    weight     = 3
+  [[menu.main]]
+    identifier = "posts"
+    name       = "r/posts"
+    url        = "posts/"
+    weight     = 4
