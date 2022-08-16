@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Sanjay Balaji ">
+<meta name="description" content="This article will help you to set up a Kubernetes cluster on AWS using kops. A command-line utility that helps you create your own master and worker nodes on AWS.
+The Major difference from using the eksctl is — eksctl uses the EKS managed service that manages the master nodes for you, but here you manage the master nodes as well.
+Requirements a free-tier AWS account on which your user has the necessary permissions on IAM." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="#252627" />
+<link rel="canonical" href="https://sanjaybalaji.dev/posts/2022/08/creating-a-kubernetes-cluster-on-aws-using-kops/" />
+
+
+    <title>
+        
+            Creating a Kubernetes cluster on AWS using kops :: sanjaybalaji.dev 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css"> 
+
+
+
+
+<link rel="stylesheet" href="/main.805b1025016494ee5fd67b55b8ecd5e2b7c4a9f0bdda42e300c62b85ddfef68f.css">
+
+
+  
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#252627">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="msapplication-TileColor" content="#252627">
+    <meta name="theme-color" content="#252627">
+
+
+
+<meta itemprop="name" content="Creating a Kubernetes cluster on AWS using kops">
+<meta itemprop="description" content="This article will help you to set up a Kubernetes cluster on AWS using kops. A command-line utility that helps you create your own master and worker nodes on AWS.
+The Major difference from using the eksctl is — eksctl uses the EKS managed service that manages the master nodes for you, but here you manage the master nodes as well.
+Requirements a free-tier AWS account on which your user has the necessary permissions on IAM."><meta itemprop="datePublished" content="2022-08-15T17:47:46+05:30" />
+<meta itemprop="dateModified" content="2022-08-15T17:47:46+05:30" />
+<meta itemprop="wordCount" content="555">
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Creating a Kubernetes cluster on AWS using kops"/>
+<meta name="twitter:description" content="This article will help you to set up a Kubernetes cluster on AWS using kops. A command-line utility that helps you create your own master and worker nodes on AWS.
+The Major difference from using the eksctl is — eksctl uses the EKS managed service that manages the master nodes for you, but here you manage the master nodes as well.
+Requirements a free-tier AWS account on which your user has the necessary permissions on IAM."/>
+
+
+
+    <meta property="og:title" content="Creating a Kubernetes cluster on AWS using kops" />
+<meta property="og:description" content="This article will help you to set up a Kubernetes cluster on AWS using kops. A command-line utility that helps you create your own master and worker nodes on AWS.
+The Major difference from using the eksctl is — eksctl uses the EKS managed service that manages the master nodes for you, but here you manage the master nodes as well.
+Requirements a free-tier AWS account on which your user has the necessary permissions on IAM." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sanjaybalaji.dev/posts/2022/08/creating-a-kubernetes-cluster-on-aws-using-kops/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-08-15T17:47:46+05:30" />
+<meta property="article:modified_time" content="2022-08-15T17:47:46+05:30" />
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2022-08-15 17:47:46 &#43;0530 IST" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">sanjaybalaji.dev</span>
+            <span class="logo__text">$</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   animation-duration:2s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://sanjaybalaji.dev/about/">r/about</a></li><li><a href="https://sanjaybalaji.dev/timeline/">r/timeline</a></li><li><a href="https://sanjaybalaji.dev/projects/">r/projects</a></li><li><a href="https://sanjaybalaji.dev/posts/">r/posts</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+             
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post"> 
+
+        <article>
+            <h2 class="post-title"><a href="https://sanjaybalaji.dev/posts/2022/08/creating-a-kubernetes-cluster-on-aws-using-kops/">Creating a Kubernetes cluster on AWS using kops</a></h2>
+
+            
+
+            <div class="post-content">
+                <p>This article will help you to set up a Kubernetes cluster on AWS using kops. A command-line utility that helps you create your own master and worker nodes on AWS.</p>
+<p>The Major difference from using the eksctl is — eksctl uses the EKS managed service that manages the master nodes for you, but here you manage the master nodes as well.</p>
+<h2 id="requirements"><strong>Requirements</strong></h2>
+<ul>
+<li>
+<p>a free-tier AWS account on which your user has the necessary permissions on IAM.</p>
+</li>
+<li>
+<p>an access key for the above mention account which can be downloaded from AWS Console</p>
+</li>
+<li>
+<p>AWS CLI 2 configured on your machine using AWS configure — kops will use this to connect to AWS Console</p>
+</li>
+<li>
+<p>Install kops on your machine</p>
+</li>
+</ul>
+<h2 id="getting-started"><strong>Getting Started</strong></h2>
+<p><em>kops</em> much like terraform maintains a state for your cluster, the state is stored remotely in this case, an S3 bucket is needed. Follow the snippet below to create a bucket that will hold your kops state. A single bucket can hold multiple states and states of multiple clusters.</p>
+<pre><code>REGION=&quot;us-east-1&quot;
+BUCKET_NAME=&quot;sanjaybalaji-kops-store&quot;
+
+# create a bucket in a specified region
+aws s3api create-bucket --bucket ${BUCKET_NAME} --region=${REGION}
+
+# enable bucket versioning so that your changes are not lost
+aws s3api put-bucket-versioning --bucket ${BUCKET_NAME} --region=${REGION} --versioning-configuration Status=Enabled
+
+# validate that bucket is created successfully
+aws s3 ls
+</code></pre>
+<h2 id="creating-the-cluster-config"><strong>Creating the cluster config</strong></h2>
+<p>Once you are done with step 1, run the following to create your cluster configuration</p>
+<pre><code># this can be used to avoid passing --state to all kops commands
+export KOPS_STATE_STORE=s3://${BUCKET_NAME}
+
+# this command creates a cluster configuration of a particular version
+
+kops create cluster --name sanjaybalaji.k8s.local --zones eu-west-1a --master-size t2.micro --node-size t2.micro --master-count 1 --node-count 2 --kubernetes-version 1.18.0 --api-loadbalancer-class network
+</code></pre>
+<p>This command only creates the cluster config, it does not provide your cluster.</p>
+<p>The os, size, and count can be altered, you can spread the cluster across zones by passing in a CSV of other az’s — note that every zone needs one master minimum.
+The API load balancer class is set to Classic by default, but that might cause an authentication issue with certain versions of Kubernetes, so we are using the Network type load balancer.</p>
+<h2 id="check-and-deploy-your-cluster"><strong>Check and Deploy your cluster</strong></h2>
+<p>To review your cluster configuration, you can run the following</p>
+<pre><code>kops edit cluster --name sanjaybalaji.k8s.local
+</code></pre>
+<p>This will give you a configuration that is editable. Once you are sure of your config, you can move on to deployment</p>
+<pre><code>kops update cluster --name sanjaybalaji.k8s.local --yes
+</code></pre>
+<p>This will take a few minutes to provision the cluster by creating the VCN, subnets, nodes, security groups etc.</p>
+<h2 id="validate-and-test-your-cluster"><strong>Validate and Test your cluster</strong></h2>
+<p>To validate your cluster you can run the following command, which will make sure that your cluster is in the expected state.</p>
+<pre><code>kops validate cluster — name sanjaybalaji.k8s.local — wait 10m
+</code></pre>
+<blockquote>
+<p>In case your validate fails even after 10–15 mins with an Unathorized error, run this command kops export kubecfg &ndash;admin and then re-run the validate command.</p>
+</blockquote>
+<p>To try a test run, you can create an nginx pod — and access <a href="http://localhost:8080">http://localhost:8080</a> and you should see an Nginx welcome page.</p>
+<pre><code>kubectl run nginx --image nginx
+
+kubectl port-forward nginx 8080:80
+</code></pre>
+<h2 id="cleanup"><strong>Cleanup</strong></h2>
+<p>Finally, To delete your cluster and all of it’s supporting resources, simply run the following command</p>
+<pre><code>kops delete cluster --name sanjaybalaji.k8s.local --yes
+</code></pre>
+<p>For the S3 bucket, you would have to clean it and delete it from the AWS Console GUI.</p>
+ 
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+
+             
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2022</span>
+            
+                <span><a href="https://sanjaybalaji.dev/">Sanjay Balaji</a></span>
+            
+             
+        </div>
+    </div> 
+</footer>
+<script type="text/javascript">
+    $(function(){
+
+  window.sr = ScrollReveal();
+
+  if ($(window).width() < 768) {
+
+    if ($('.timeline-content').hasClass('js--fadeInLeft')) {
+        $('.timeline-content').removeClass('js--fadeInLeft').addClass('js--fadeInRight');
+    }
+
+    sr.reveal('.js--fadeInRight', {
+        origin: 'right',
+        distance: '300px',
+        easing: 'ease-in-out',
+        duration: 800,
+      });
+
+  } else {
+    
+    sr.reveal('.js--fadeInLeft', {
+        origin: 'left',
+        distance: '300px',
+          easing: 'ease-in-out',
+        duration: 800,
+      });
+
+      sr.reveal('.js--fadeInRight', {
+        origin: 'right',
+        distance: '300px',
+        easing: 'ease-in-out',
+        duration: 800,
+      });
+
+  }
+  
+  sr.reveal('.js--fadeInLeft', {
+        origin: 'left',
+        distance: '300px',
+          easing: 'ease-in-out',
+        duration: 800,
+      });
+
+      sr.reveal('.js--fadeInRight', {
+        origin: 'right',
+        distance: '300px',
+        easing: 'ease-in-out',
+        duration: 800,
+      });
+
+
+});
+
+</script>
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="/bundle.min.af5a3e743efae0c74305dc03080fb4bd5ae8f1a60160b3599ab59639ad6c182d763fb4238e72a726f48319ad132a4cdc9cd51fac5462e8a25dc0ba096f547038.js" integrity="sha512-r1o&#43;dD764MdDBdwDCA&#43;0vVro8aYBYLNZmrWWOa1sGC12P7QjjnKnJvSDGa0TKkzcnNUfrFRi6KJdwLoJb1RwOA=="></script>
+
+
+
+    </body>
+</html>

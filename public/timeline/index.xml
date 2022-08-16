@@ -1,0 +1,94 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Timelines on sanjaybalaji.dev</title>
+        <link>https://sanjaybalaji.dev/timeline/</link>
+        <description>Recent content in Timelines on sanjaybalaji.dev</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 09 May 2022 00:00:00 +0000</lastBuildDate>
+        <atom:link href="https://sanjaybalaji.dev/timeline/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Senior DevOps Engineer</title>
+            <link>https://sanjaybalaji.dev/timeline/tellius-devops/</link>
+            <pubDate>Mon, 09 May 2022 00:00:00 +0000</pubDate>
+            
+            <guid>https://sanjaybalaji.dev/timeline/tellius-devops/</guid>
+            <description>Abstract Working on automating the Tellius app stack with terraform, to be compatible across all 3 major cloud providers. Working on building CI/CD pipelines using Drone CI and Argo CD. Implementing Istio and other tools for improved security. Managing &amp;amp; tracking compliance of our application deployments using Vanta. Working on managing KOPS clusters. Working on cost optimization in the cloud. Recognition Received the Innovation award within 3 months of joining Tellius.</description>
+            <content type="html"><![CDATA[<h2 id="abstract">Abstract</h2>
+<ul>
+<li>Working on automating the Tellius app stack with terraform, to be compatible across all 3 major cloud providers.</li>
+<li>Working on building CI/CD pipelines using Drone CI and Argo CD.</li>
+<li>Implementing Istio and other tools for improved security.</li>
+<li>Managing &amp; tracking compliance of our application deployments using Vanta.</li>
+<li>Working on managing KOPS clusters.</li>
+<li>Working on cost optimization in the cloud.</li>
+</ul>
+<h2 id="recognition">Recognition</h2>
+<ul>
+<li>Received the Innovation award within 3 months of joining Tellius.</li>
+</ul>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Site Reliability Engineer</title>
+            <link>https://sanjaybalaji.dev/timeline/eightfold-sre/</link>
+            <pubDate>Wed, 23 Feb 2022 00:00:00 +0000</pubDate>
+            
+            <guid>https://sanjaybalaji.dev/timeline/eightfold-sre/</guid>
+            <description>Abstract Worked on writing python APIs to utilize AWS Boto SDKs for our internal tooling applications. Worked on Cloudformation templates to deploy app stacks across regions. Worked on assisting with developer productivity for internal tooling and automation. </description>
+            <content type="html"><![CDATA[<h2 id="abstract">Abstract</h2>
+<ul>
+<li>Worked on writing python APIs to utilize AWS Boto SDKs for our internal tooling applications.</li>
+<li>Worked on Cloudformation templates to deploy app stacks across regions.</li>
+<li>Worked on assisting with developer productivity for internal tooling and automation.</li>
+</ul>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Cloud DevOps Engineer 1 &amp; 2</title>
+            <link>https://sanjaybalaji.dev/timeline/oracle-devops/</link>
+            <pubDate>Fri, 10 Apr 2020 00:00:00 +0000</pubDate>
+            
+            <guid>https://sanjaybalaji.dev/timeline/oracle-devops/</guid>
+            <description>Abstract Worked on dockerizing applications, deploying to kubernetes. Scaled traditional applications and figured out a deployment plan for monoliths to make them fault-tolerant and highly available. Worked with Product teams to build out and deploy applications to Oracle Cloud Infrastructure. Helped build cross-region disaster recovery systems and SOPs across Canada &amp;amp; Australia. Recognition Rated Outstanding Employee every year during my tenure at Oracle. Won multiple awards at the Quarterly Awards Ceremony for Innovation and Drive.</description>
+            <content type="html"><![CDATA[<h2 id="abstract">Abstract</h2>
+<ul>
+<li>Worked on dockerizing applications, deploying to kubernetes.</li>
+<li>Scaled traditional applications and figured out a deployment plan for monoliths to make them fault-tolerant and highly available.</li>
+<li>Worked with Product teams to build out and deploy applications to Oracle Cloud Infrastructure.</li>
+<li>Helped build cross-region disaster recovery systems and SOPs across Canada &amp; Australia.</li>
+</ul>
+<h2 id="recognition">Recognition</h2>
+<ul>
+<li>Rated Outstanding Employee every year during my tenure at Oracle.</li>
+<li>Won multiple awards at the Quarterly Awards Ceremony for Innovation and Drive.</li>
+<li>Promoted within 1 year and 10 mo from associate for outstanding performance.</li>
+</ul>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Internship</title>
+            <link>https://sanjaybalaji.dev/timeline/internship/</link>
+            <pubDate>Tue, 15 Jan 2019 00:00:00 +0000</pubDate>
+            
+            <guid>https://sanjaybalaji.dev/timeline/internship/</guid>
+            <description>Abstract Worked extensively on Docker and Jenkins, to setup CI/CD pipelines.
+Worked with for a Java 8 application that would internally use Kubernetes SDKs to deploy and manage customer environments on K8s Clusters.</description>
+            <content type="html"><![CDATA[<h2 id="abstract">Abstract</h2>
+<ul>
+<li>
+<p>Worked extensively on Docker and Jenkins, to setup CI/CD pipelines.</p>
+</li>
+<li>
+<p>Worked with for a Java 8 application that would internally use Kubernetes SDKs to deploy and manage customer environments on K8s Clusters.</p>
+</li>
+</ul>
+]]></content>
+        </item>
+        
+    </channel>
+</rss>
