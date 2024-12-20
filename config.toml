@@ -15,6 +15,9 @@ name = "Sanjay Balaji"
 [permalinks]
   posts = "/posts/:year/:month/:title/"
 
+[services]
+  [GoogleAnalytics]
+    id = ""
 
 [params]
   defaultTheme = "dark"
