@@ -4,7 +4,8 @@
     <title>Tags on sanjaybalaji.dev</title>
     <link>https://sanjaybalaji.dev/tags/</link>
     <description>Recent content in Tags on sanjaybalaji.dev</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://sanjaybalaji.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://sanjaybalaji.dev/tags/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

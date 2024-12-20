@@ -5,7 +5,7 @@ theme = "timeline"
 PygmentsCodeFences = true
 PygmentsStyle = "monokai"
 paginate  = 10
-
+name = "Sanjay Balaji"
 
 [taxonomies]
   tag      = "tags"
@@ -15,8 +15,6 @@ paginate  = 10
 [permalinks]
   posts = "/posts/:year/:month/:title/"
 
-[author]
-  name = "Sanjay Balaji"
 
 [params]
   defaultTheme = "dark"

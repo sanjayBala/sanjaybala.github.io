@@ -4,30 +4,23 @@
     <title>Posts on sanjaybalaji.dev</title>
     <link>https://sanjaybalaji.dev/posts/</link>
     <description>Recent content in Posts on sanjaybalaji.dev</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 15 Aug 2022 17:47:46 +0530</lastBuildDate><atom:link href="https://sanjaybalaji.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 Aug 2022 17:47:46 +0530</lastBuildDate>
+    <atom:link href="https://sanjaybalaji.dev/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Building smaller docker images — the right way</title>
       <link>https://sanjaybalaji.dev/posts/2022/08/building-smaller-docker-images-the-right-way/</link>
       <pubDate>Mon, 15 Aug 2022 17:47:46 +0530</pubDate>
-      
       <guid>https://sanjaybalaji.dev/posts/2022/08/building-smaller-docker-images-the-right-way/</guid>
-      <description>Docker images are great, they are easy to work with — but they can get blown up to huge sizes when you are not paying attention on building them right.
-Apart from just the size, this can also end up bringing a serious security vulnerability to your production Kubernetes cluster just because you had a package that you never used.
-Section 3 is a must read if you have a large python app docker image that needs to be optimised and made smaller.</description>
+      <description>&lt;p&gt;Docker images are great, they are easy to work with — but they can get blown up to huge sizes when you are not paying attention on building them right.&lt;/p&gt;&#xA;&lt;p&gt;Apart from just the size, this can also end up bringing a serious security vulnerability to your production Kubernetes cluster just because you had a package that you never used.&lt;/p&gt;&#xA;&lt;p&gt;Section 3 is a must read if you have a large python app docker image that needs to be optimised and made smaller.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Creating a Kubernetes cluster on AWS using kops</title>
       <link>https://sanjaybalaji.dev/posts/2022/08/creating-a-kubernetes-cluster-on-aws-using-kops/</link>
       <pubDate>Mon, 15 Aug 2022 17:47:46 +0530</pubDate>
-      
       <guid>https://sanjaybalaji.dev/posts/2022/08/creating-a-kubernetes-cluster-on-aws-using-kops/</guid>
-      <description>This article will help you to set up a Kubernetes cluster on AWS using kops. A command-line utility that helps you create your own master and worker nodes on AWS.
-The Major difference from using the eksctl is — eksctl uses the EKS managed service that manages the master nodes for you, but here you manage the master nodes as well.
-Requirements a free-tier AWS account on which your user has the necessary permissions on IAM.</description>
+      <description>&lt;p&gt;This article will help you to set up a Kubernetes cluster on AWS using kops. A command-line utility that helps you create your own master and worker nodes on AWS.&lt;/p&gt;&#xA;&lt;p&gt;The Major difference from using the eksctl is — eksctl uses the EKS managed service that manages the master nodes for you, but here you manage the master nodes as well.&lt;/p&gt;&#xA;&lt;h2 id=&#34;requirements&#34;&gt;&lt;strong&gt;Requirements&lt;/strong&gt;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;a free-tier AWS account on which your user has the necessary permissions on IAM.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>
